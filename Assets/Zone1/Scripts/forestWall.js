@@ -4,7 +4,7 @@ var forest1hint : UI.Text;
 
 function OnTriggerEnter(col : Collider) {
     if(col.gameObject.tag == "Player") {
-        forest1hint.text = "The forest is too think here to move through. You must follow the path.";
+        forest1hint.text = "The forest is too thick here to move through (really!). You must follow the path.";
     }
 }
 
