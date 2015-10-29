@@ -8,7 +8,7 @@ function OnTriggerEnter(col : Collider) {
             rockText.text = "You need dynamite to clear the rock before you can continue.";
         }
         else {
-            rockText.text = "//You plant the dynamite. The rock explodes!";
+            rockText.text = "//You plant the dynamite. The rock explodes! Continue to the next level";
             Destroy(gameObject);
         }
     }
