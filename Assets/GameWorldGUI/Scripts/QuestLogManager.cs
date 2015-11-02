@@ -2,7 +2,7 @@
 using System.Collections;
 using UnityEngine.UI;
 
-public class QuestLogScript : MonoBehaviour {
+public class QuestLogManager : MonoBehaviour {
 
 	public Text questPrimaryDescription;
 	public Text questMasteryDescription;
@@ -21,19 +21,22 @@ public class QuestLogScript : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		// Remove this when ready to implement
-		questPrimaryDescription.text = "Kill the bandit boss";
-		questMasteryDescription.text = "Complete 5 addition problems";
+		QuestDelegate.onMasteryQuestProgressUpdated += this.masteryQuestUpdated;
+		QuestDelegate.onPrimaryQuestProgressUpdated += this.primaryQuestUpdated;
 
+		// This should be removed whe
+		questPrimaryDescription.text = "Find the dynamite";
+		questMasteryDescription.text = "Complete 5 addition problems";
+		
 		initMasteryProgress(0, 5);
 		initPrimaryProgress(0, 1);
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		// Remove this when ready to implement
-		incrementMasteryProgress();
+
 	}
+
 
 	public void setPrimaryText(string s) {
 		questPrimaryDescription.text = s;
@@ -57,14 +60,14 @@ public class QuestLogScript : MonoBehaviour {
 		questMasteryProgress.text = initial + " / " + goal; 
 	}
 
-	public void incrementPrimaryProgress() {
+	public void primaryQuestUpdated() {
 		if (currentPrimaryProgress < goalPrimaryProgress) {
 			currentPrimaryProgress++;
 			questPrimaryProgress.text = currentPrimaryProgress + " / " + goalPrimaryProgress;
 		}
 	}
 
-	public void incrementMasteryProgress() {
+	public void masteryQuestUpdated() {
 		if (currentMasteryProgress < goalMasteryProgress) {
 			currentMasteryProgress++;
 			questMasteryProgress.text = currentMasteryProgress + " / " + goalMasteryProgress;
