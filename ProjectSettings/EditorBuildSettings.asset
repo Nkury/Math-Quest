@@ -11,7 +11,9 @@ EditorBuildSettings:
     path: 'Assets/Zone #1.unity'
   - enabled: 0
     path: Assets/TestGameWorldGUI.unity
-  - enabled: 1
+  - enabled: 0
     path: Assets/nizar battle system.unity
-  - enabled: 1
+  - enabled: 0
     path: 'Assets/nizar Zone #1.unity'
+  - enabled: 1
+    path: Assets/TestGameWorldGUI.unity
