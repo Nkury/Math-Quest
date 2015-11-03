@@ -20,7 +20,11 @@ public class MonsterCollider : MonoBehaviour {
         PlayerPrefs.SetFloat("player_x", obj.gameObject.transform.position.x);
         PlayerPrefs.SetFloat("player_y", obj.gameObject.transform.position.y);
         PlayerPrefs.SetFloat("player_z", obj.gameObject.transform.position.z);
-       
+        PlayerPrefs.SetFloat("rotation_x", obj.gameObject.transform.rotation.x);
+        PlayerPrefs.SetFloat("rotation_y", obj.gameObject.transform.rotation.y);
+        PlayerPrefs.SetFloat("rotation_z", obj.gameObject.transform.rotation.z);
+        //PlayerPrefs.SetFloat("rotation_w", obj.gameObject.transform.rotation.w);
+
         if (obj.gameObject.tag == "Player" && gameObject.tag == "slime")
         {
             int enemyHealth = Random.Range(5, 10);
@@ -31,7 +35,7 @@ public class MonsterCollider : MonoBehaviour {
 
         if (obj.gameObject.tag == "Player" && gameObject.tag == "bandit")
         {
-            int enemyHealth = Random.Range(10, 15);
+            int enemyHealth = Random.Range(7, 11);
             PlayerPrefs.SetInt("enemy_health", enemyHealth);
             PlayerPrefs.SetInt("monster_type", 2);
             PlayerPrefs.SetString("monster_name", gameObject.name);

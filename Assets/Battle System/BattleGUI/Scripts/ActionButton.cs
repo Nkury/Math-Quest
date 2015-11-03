@@ -8,12 +8,11 @@ public class ActionButton : MonoBehaviour {
 
     public Sprite SelectedSprite;
 
-    internal Button Button { get; set; }
+    public Button Button;
     internal int Value { get; set; }
     Color DefaultColor { get; set; }
 
 	void Start () {
-        Button = gameObject.GetComponent<Button>();
         DefaultColor = new Color(.85f, .85f, .85f, 1);
         IsSelected = false;
 	}
@@ -23,12 +22,6 @@ public class ActionButton : MonoBehaviour {
     {
 
 	}
-
-    public bool Clicked()
-    {
-        IsSelected = !IsSelected;
-        return IsSelected;
-    }
 
     public bool IsSelected
     {
@@ -60,6 +53,12 @@ public class ActionButton : MonoBehaviour {
     {
         Button.image.color = DefaultColor;
         Button.image.overrideSprite = null;
+    }
+
+    void Disable()
+    {
+        IsSelected = false;
+        Button.image.color = new Color(1f, 1f, 1f, .5f);
     }
 
     private bool isSelected = false;
