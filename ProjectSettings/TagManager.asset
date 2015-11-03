@@ -8,6 +8,7 @@ TagManager:
   - slime
   - bandit
   - troll
+  - attackBandit
   layers:
   - Default
   - TransparentFX

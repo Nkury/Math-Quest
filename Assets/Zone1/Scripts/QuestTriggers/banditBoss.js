@@ -4,12 +4,14 @@ var banditBossText : UI.Text;
 public var enableDynamite : boolean = false;
 var banditBossScene : boolean = false;
 
+
 function OnTriggerEnter(col : Collider) {
     if(col.gameObject.tag == "Player") {
         if(banditBossScene == false){
-            banditBossText.text = "The bandit boss is here. //cut scene?. Go find the dynamite to blow up the rock.";
+            banditBossText.text = "The bandit boss is here!. After defeating him go find the dynamite to blow up the rock.";
             banditBossScene = true;
             enableDynamite = true;
+            
         }
         else if (!GameObject.Find("findDynamite").GetComponent.<dynamite>().hasDynamite) {
             banditBossText.text = "Stop stalling! Go find the dynamite!";
