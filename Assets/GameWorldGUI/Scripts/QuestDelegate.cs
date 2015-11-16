@@ -5,7 +5,7 @@ public class QuestDelegate : MonoBehaviour {
 
 	// Delegates
 	public delegate void PrimaryQuestProgressHandler();
-	public delegate void MasteryQuestProgressHandler();
+	public delegate void MasteryQuestProgressHandler(int stars);
 
 
 	// Events
@@ -18,9 +18,9 @@ public class QuestDelegate : MonoBehaviour {
 		}
 	}
 
-	public static void masteryQuestUpdated() {
+	public static void masteryQuestUpdated(int stars) {
 		if (onMasteryQuestProgressUpdated != null) {
-			onMasteryQuestProgressUpdated();
+			onMasteryQuestProgressUpdated(stars);
 		}
 	}
 }

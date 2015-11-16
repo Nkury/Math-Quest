@@ -1,7 +1,10 @@
 ﻿using UnityEngine;
-using System.Collections;
+using System;
 
 public class ButtonController : MonoBehaviour {
+	
+	private System.Random randomNumber = new System.Random();
+
 
 	// Use this for initialization
 	void Start () {
@@ -18,6 +21,6 @@ public class ButtonController : MonoBehaviour {
 	}
 
 	public void UpdateMastery() {
-		QuestDelegate.masteryQuestUpdated();
+		QuestDelegate.masteryQuestUpdated(randomNumber.Next(1,4));
 	}
 }
