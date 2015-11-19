@@ -2,11 +2,14 @@
 using System.Collections;
 using UnityEngine.UI;
 using System;
+using System.IO;
 
 public class QuestLogManager : MonoBehaviour {
 
 	public Image primaryQuestImage;
 	public Image primaryQuestBackgroundImage;
+	public Image primaryQuestDescriptionBG;
+	public Text primaryQuestDescriptionText;
 	public Text masteryQuestCount;
 
 	public ArrayList questPrimaryQuests = new ArrayList();
@@ -25,8 +28,12 @@ public class QuestLogManager : MonoBehaviour {
 	private Color startColor = new Color(1, 0, 0, 1);
 	private Color endColor = new Color(1, 1, 0, 1);
 
+	private Image[] questImages = new Image[];
+
 	// Use this for initialization
 	void Start () {
+		questImages = 
+
 		QuestDelegate.onMasteryQuestProgressUpdated += this.masteryQuestStatusUpdated;
 		QuestDelegate.onPrimaryQuestProgressUpdated += this.primaryQuestStatusUpdated;
 
@@ -42,9 +49,9 @@ public class QuestLogManager : MonoBehaviour {
 		if (primaryQuestBackgroundImage.color != colorPrimaryQuestComplete) {
 			var ratio = (Time.time - lastColorChangeTime) / FadeDuration;
 			ratio = Mathf.Clamp01(ratio);
-			primaryQuestBackgroundImage.color = Color.Lerp(startColor, endColor, ratio);
-			//material.color = Color.Lerp(startColor, endColor, Mathf.Sqrt(ratio)); // A cool effect
-			//material.color = Color.Lerp(startColor, endColor, ratio * ratio); // Another cool effect
+			//primaryQuestBackgroundImage.color = Color.Lerp(startColor, endColor, ratio);
+			//primaryQuestBackgroundImage.color = Color.Lerp(startColor, endColor, Mathf.Sqrt(ratio)); // A cool effect
+			primaryQuestBackgroundImage.color = Color.Lerp(startColor, endColor, ratio * ratio); // Another cool effect
 		
 			if (ratio == 1f) {
 				lastColorChangeTime = Time.time;
