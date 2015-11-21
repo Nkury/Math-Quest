@@ -23,4 +23,8 @@ public class ButtonController : MonoBehaviour {
 	public void UpdateMastery() {
 		QuestDelegate.masteryQuestUpdated(randomNumber.Next(1,4));
 	}
+
+	public void NextQuest() {
+		QuestDelegate.nextPrimaryQuestRequest();
+	}
 }
