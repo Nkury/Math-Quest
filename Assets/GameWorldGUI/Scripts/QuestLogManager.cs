@@ -31,17 +31,13 @@ public class QuestLogManager : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		QuestDelegate.onMasteryQuestProgressUpdated += this.masteryQuestStatusUpdated;
-		QuestDelegate.onPrimaryQuestProgressUpdated += this.primaryQuestStatusUpdated;
-		QuestDelegate.onNextPrimaryQuestRequest += this.nextPrimaryQuest;
-
-		masteryQuestCount.text = "0";
+		// Subscribe to events 
+		QuestDelegate.onMasteryQuestProgressEvent += this.masteryQuestStatusUpdated;
+		QuestDelegate.onPrimaryQuestProgressEvent += this.primaryQuestStatusUpdated;
+		QuestDelegate.onStartQuestForZoneEvent += this.startQuestForZone;
 
 		initMasteryProgress(0, 1000);
-
-		primaryQuestImage1.enabled = true;
-		primaryQuestImage2.enabled = false;
-		primaryQuestImage3.enabled = false;
+		startQuestForZone(1);
 	}
 	
 	// Update is called once per frame
@@ -62,8 +58,8 @@ public class QuestLogManager : MonoBehaviour {
 		}
 	}
 
-	public void startQuestForZone(int zoneNumber) {
-		switch(zoneNumber) {
+	public void startQuestForZone(int zoneNum) {
+		switch(zoneNum) {
 		case 1:
 			primaryQuestImage1.enabled = true;
 			primaryQuestImage2.enabled = false;
@@ -91,22 +87,17 @@ public class QuestLogManager : MonoBehaviour {
 	public void initMasteryProgress(int initial, int goal) {
 		currentMasteryProgress = initial;
 		goalMasteryProgress = goal;
+		masteryQuestCount.text = Convert.ToString(initial);
 	}
 
 	public void primaryQuestStatusUpdated() {
 		primaryQuestBackgroundImage.color = colorPrimaryQuestComplete;
 	}
+	
 
-	public void nextPrimaryQuest() {
-		if(currentPrimaryQuest < finalPrimaryQuest) {
-			currentPrimaryQuest++;
-			startQuestForZone(currentPrimaryQuest);
-		}
-	}
-
-	public void masteryQuestStatusUpdated(int stars) {
+	public void masteryQuestStatusUpdated(int medals) {
 		if (currentMasteryProgress < goalMasteryProgress) {
-			currentMasteryProgress+=stars;
+			currentMasteryProgress+=medals;
 			masteryQuestCount.text = Convert.ToString(currentMasteryProgress);
 		}
 	}

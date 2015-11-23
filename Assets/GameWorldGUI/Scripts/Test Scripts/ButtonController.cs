@@ -22,9 +22,11 @@ public class ButtonController : MonoBehaviour {
 
 	public void UpdateMastery() {
 		QuestDelegate.masteryQuestUpdated(randomNumber.Next(1,4));
+		QuestDelegate.startQuestForZone(randomNumber.Next(1,4));
 	}
 
 	public void NextQuest() {
-		QuestDelegate.nextPrimaryQuestRequest();
+		QuestDelegate.startQuestForZone(3);
+
 	}
 }

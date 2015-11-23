@@ -5,30 +5,30 @@ public class QuestDelegate : MonoBehaviour {
 
 	// Delegates
 	public delegate void PrimaryQuestProgressHandler();
-	public delegate void MasteryQuestProgressHandler(int stars);
-	public delegate void NextPrimaryQuestRequestHandler();
+	public delegate void MasteryQuestProgressHandler(int medals);
+	public delegate void StartQuestForZoneHandler(int zoneNum);
 
 	// Events
-	public static event PrimaryQuestProgressHandler onPrimaryQuestProgressUpdated;
-	public static event MasteryQuestProgressHandler onMasteryQuestProgressUpdated;
-	public static event NextPrimaryQuestRequestHandler onNextPrimaryQuestRequest;
+	public static event PrimaryQuestProgressHandler onPrimaryQuestProgressEvent;
+	public static event MasteryQuestProgressHandler onMasteryQuestProgressEvent;
+	public static event StartQuestForZoneHandler onStartQuestForZoneEvent;
 
 
 	public static void primaryQuestUpdated() {
-		if (onPrimaryQuestProgressUpdated != null) {
-			onPrimaryQuestProgressUpdated();
+		if (onPrimaryQuestProgressEvent != null) {
+			onPrimaryQuestProgressEvent();
 		}
 	}
 
-	public static void masteryQuestUpdated(int stars) {
-		if (onMasteryQuestProgressUpdated != null) {
-			onMasteryQuestProgressUpdated(stars);
+	public static void masteryQuestUpdated(int medals) {
+		if (onMasteryQuestProgressEvent != null) {
+			onMasteryQuestProgressEvent(medals);
 		}
 	}
 
-	public static void nextPrimaryQuestRequest() {
-		if (onNextPrimaryQuestRequest != null) {
-			onNextPrimaryQuestRequest();
+	public static void startQuestForZone(int zoneNum) {
+		if (onStartQuestForZoneEvent != null) {
+			onStartQuestForZoneEvent(zoneNum);
 		}
 	}
 }
